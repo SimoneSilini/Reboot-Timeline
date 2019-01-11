@@ -43,8 +43,9 @@ Appearance Settings:
 - GitHub: https://github.com/SimoneSilini/Reboot-Timeline
 - Qlik Branch: http://branch.qlik.com/#!/project/5a9987d324c6aa484f158acf
 - Note please that this solution was created based on these two projects: 
-    -https://github.com/kai/qlik-sense-timeline
-    -https://github.com/plzaart/multicolored_timeline
+    
+    https://github.com/kai/qlik-sense-timeline
+    https://github.com/plzaart/multicolored_timeline
 
 
 ##  License

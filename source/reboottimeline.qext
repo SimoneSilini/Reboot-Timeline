@@ -1,0 +1,9 @@
+{
+	"name" : "Reboot Timeline",
+	"description" : "Reboot Timeline",
+	"icon" : "bar-chart-vertical",
+	"type" : "visualization",
+	"version": "1.0",
+	"preview" : "bar",
+	"author": "Simone Silini"
+}

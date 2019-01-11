@@ -28,10 +28,19 @@ DateFormats:
     - YYYY-MM-DD hh:mm{:ss} full date with time (seconds are optional)
 
 
+## Front-End Configuration
+Appearance Settings:
+
+- General: standard Qlik Sesnse general appearence settings for titles etc
+- Show Row Labels: boolean switch -> display or not the label on the left of the chart
+- Group Row Labels: boolean switch -> group lines with the same label name (as the second image shows)
+- Color Expression: if black you get the standard google timeline chart colors, or you can specify a Qlik sense color expression or even a field containing a hex color string
+- Date Format: let you insert the date format (https://en.wikipedia.org/wiki/ISO_8601)
+
 
 ##  Sources
 
-- GitHub: https://github.com/plzaart/multicolored_timeline
+- GitHub: https://github.com/SimoneSilini/Reboot-Timeline
 - Qlik Branch: http://branch.qlik.com/#!/project/5a9987d324c6aa484f158acf
 - Note please that this solution was created based on these two projects: 
     -https://github.com/kai/qlik-sense-timeline

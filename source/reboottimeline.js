@@ -77,14 +77,14 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
                         selection3 :
                             {
                                 type : "string",
-                                label : "Enter color expression",
+                                label : "Color expression",
                                 ref : "colorExpression",
                                 expression:"optional"
                             },
                         selection4 :
                             {
                                 type : "string",
-                                label : "Enter date format",
+                                label : "Date format",
                                 ref : "dateFormat",
                                 expression:"optional"
                             }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5e9b1c6-bddb-41fb-ad14-5976ad59740a" name="Default Changelist" comment="" />
+    <list default="true" id="c5e9b1c6-bddb-41fb-ad14-5976ad59740a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/reboottimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/reboottimeline.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +35,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="569" />
-          <entry key="md" value="229" />
+          <entry key="js" value="571" />
+          <entry key="md" value="822" />
           <entry key="qext" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="569" />
-          <entry key="Markdown" value="229" />
+          <entry key="JavaScript" value="571" />
+          <entry key="Markdown" value="822" />
           <entry key="PLAIN_TEXT" value="24" />
         </counts>
       </usages-collector>
@@ -51,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/reboottimeline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="108" column="53" selection-start-line="108" selection-start-column="48" selection-end-line="108" selection-end-column="53" />
+            <state relative-caret-position="363">
+              <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -64,8 +67,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="643">
-                <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+              <first_editor relative-caret-position="791">
+                <caret line="36" column="174" selection-start-line="36" selection-start-column="174" selection-end-line="36" selection-end-column="174" />
               </first_editor>
               <second_editor />
             </state>
@@ -96,11 +99,15 @@
       <find>start</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/source/googtimeline.js" />
         <option value="$PROJECT_DIR$/source/googtimeline.qext" />
+        <option value="$PROJECT_DIR$/source/reboottimeline.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -116,6 +123,9 @@
     <option name="y" value="106" />
     <option name="width" value="800" />
     <option name="height" value="856" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -168,12 +178,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547206517226</updated>
-      <workItem from="1547206522244" duration="6066000" />
+      <workItem from="1547206522244" duration="6722000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6066000" />
+    <option name="totallyTimeSpent" value="6722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
@@ -220,8 +230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/reboottimeline.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="108" column="53" selection-start-line="108" selection-start-column="48" selection-end-line="108" selection-end-column="53" />
+        <state relative-caret-position="363">
+          <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -231,8 +241,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="643">
-            <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+          <first_editor relative-caret-position="791">
+            <caret line="36" column="174" selection-start-line="36" selection-start-column="174" selection-end-line="36" selection-end-column="174" />
           </first_editor>
           <second_editor />
         </state>

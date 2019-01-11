@@ -6,9 +6,9 @@
 require.config({
 	paths : {
 		//create alias to plugins
-		async : '/extensions/reboottimeline/async',
-		goog : '/extensions/reboottimeline/goog',
-		propertyParser : '/extensions/reboottimeline/propertyParser',
+		async : '/extensions/googtimeline/async',
+		goog : '/extensions/googtimeline/goog',
+		propertyParser : '/extensions/googtimeline/propertyParser',
 	}
 });
 define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], function($) {'use strict';

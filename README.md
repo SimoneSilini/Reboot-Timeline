@@ -15,8 +15,10 @@ Dimensions:
 
 - Dimension 1 (required): Main dimension and row label
 - Dimension 2 (optional): Bar label
-- Dimension 3 (required): Start datetime
-- Dimension 4 (required): End datetime
+- Dimension 3 (optional): Bar color or Bar Tooltip
+- Dimension 4 (optional): Bar Tooltip
+- Dimension 5 (required): Start datetime
+- Dimension 6 (required): End datetime
 
 Measures:
 There is no measure.
@@ -34,8 +36,15 @@ Appearance Settings:
 - General: standard Qlik Sesnse general appearence settings for titles etc
 - Show Row Labels: boolean switch -> display or not the label on the left of the chart
 - Group Row Labels: boolean switch -> group lines with the same label name (as the second image shows)
-- Color Expression: if black you get the standard google timeline chart colors, or you can specify a Qlik sense color expression or even a field containing a hex color string
+- Colors:
+    * Use Single Color: boolean switch -> use the same color for all the bars (require Single Color Expression) 
+    * Single Color Expression: string -> the hex code of the color for all the bars
+    * Color by Row Label -> Same color for all the bars with the same label (requires optional bar label dimension)
+    * Background color -> string -> the hex code of the color for the background  
 - Date Format: let you insert the date format (https://en.wikipedia.org/wiki/ISO_8601)
+    * you can use if condition to dinamically change the format i.e: = If(GetSelectedCount(Data) = 1 OR GetPossibleCount(Data) = 1, 'HH:mm', 'd/M/yy') 
+- Colors or Tooltip: This is required if you use 5 dimensions, let you choose if you want to use the third dimension as a Color or as a Tooltip. (has no effect if you has 3, 4 or 6 dimensions)
+
 
 
 ##  Sources

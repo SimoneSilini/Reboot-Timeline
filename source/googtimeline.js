@@ -26,8 +26,13 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 			chartType : "timeline",
 			showRowLabels : true,
 			groupByRowLabel : false,
-            colorExpression: "",
-			dateFormat: "d/M/yy"
+            singleColor: false,
+			singleColorExpression: "",
+			colorByRowLabel : false,
+			colorsExpression: "",
+            backgroundColorExpression: "",
+			dateFormat: "d/M/yy",
+            thirdDimension: "t"
 		},
 		//property panel
 		definition : {
@@ -37,7 +42,7 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 				dimensions : {
 					uses : "dimensions",
 					min : 3,
-					max : 4
+					max : 5
 				},
 				sorting : {
 					uses : "sorting"
@@ -76,18 +81,95 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 						},
                         selection3 :
                             {
-                                type : "string",
-                                label : "Color expression",
-                                ref : "colorExpression",
-                                expression:"optional"
+                            	type : "items",
+								label: "Colors",
+								items:
+                                    {
+                                        SingleColor:
+                                            {
+                                                type: "items",
+                                                label: "Single Color",
+                                                items:
+                                                    {
+                                                        singleColor:
+                                                            {
+                                                                type: "boolean",
+                                                                component: "switch",
+                                                                label: "Use Single Color",
+                                                                ref: "singleColor",
+                                                                options: [{
+                                                                    value: true,
+                                                                    label: "On"
+                                                                }, {
+                                                                    value: false,
+                                                                    label: "Off"
+                                                                }]
+                                                            },
+                                                        singleColorExpression:
+                                                            {
+                                                                type: "string",
+                                                                label: "Single Color expression",
+                                                                ref: "singleColorExpression",
+                                                                expression: "optional"
+                                                            }
+                                                    }
+                                            },
+                                        colorByRowLabel:
+                                            {
+                                                type: "items",
+                                                label: "Color by Row Label",
+                                                items:
+                                                    {
+                                                        ColorByRowLabel:
+                                                            {
+
+                                                                type : "boolean",
+                                                                component : "switch",
+                                                                label : "Color by Row Label",
+                                                                ref : "colorByRowLabel",
+                                                                options : [{
+                                                                    value : true,
+                                                                    label : "On"
+                                                                },{
+                                                                    value : false,
+                                                                    label : "Off"
+                                                                }]
+                                                            }
+                                                    }
+                                            },
+										backroundColor:
+											{
+													type: "string",
+													label: "Background Color",
+													ref: "backgroundColorExpression",
+													expression: "optional"
+											}
+                                    }
+
                             },
-                        selection4 :
+                        selection5 :
                             {
                                 type : "string",
                                 label : "Date format",
                                 ref : "dateFormat",
                                 expression:"optional"
-                            }
+                            },
+                        selection6: {
+                            type: "string",
+                            component: "buttongroup",
+                            label: "Colors or Tooltip",
+                            ref: "thirdDimension",
+                            options: [{
+                                value: "c",
+                                label: "Colors",
+                                tooltip: "Select to use third dimension for coloring"
+                            }, {
+                                value: "t",
+                                label: "Tooltip",
+                                tooltip: "Select to use third dimension for tooltip"
+                            }],
+                            defaultValue: "c"
+                        }
 
 					}
 				}
@@ -103,9 +185,22 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 			var data = new google.visualization.DataTable();
 
 			data.addColumn({ type: 'string', id: 'Campaign' });
-			if(dimCount==4) {
-				data.addColumn({ type: 'string', id: 'Name' });
-			}
+
+			if(dimCount == 6) {
+                data.addColumn({ type: 'string', id: 'Name' });
+                data.addColumn({ type: 'string', role: 'style' });
+                data.addColumn({ type: 'string', role: 'tooltip'});
+
+			}else if(dimCount==5) {
+                data.addColumn({ type: 'string', id: 'Name' });
+                if(layout.thirdDimension == 'c') {
+                    data.addColumn({ type: 'string', role: 'style' });
+				} else {
+                    data.addColumn({ type: 'string', role: 'tooltip'});
+				}
+			} else if(dimCount==4) {
+                data.addColumn({ type: 'string', id: 'Name' });
+            }
         	data.addColumn({ type: 'date', id: 'Start' });
         	data.addColumn({ type: 'date', id: 'End' });
 
@@ -114,7 +209,15 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 				row.forEach(function(cell, col) {
 					
 					//values.push(cell.qText);
-					if(dimCount==4) {
+					if(dimCount==5) {
+                        if(col<3)
+                        {
+                            values.push(cell.qText);
+                        } else {
+                            var myDate = new Date(cell.qText);
+                            values.push(myDate);
+                        }
+					} else if(dimCount==4) {
 						if(col<2)
 						{
 							values.push(cell.qText);
@@ -142,46 +245,73 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 
 			//Instantiating and drawing the chart
 			//var chart = new google.visualization[layout.chartType]($element[0]);
-
-			var options = layout.colorExpression === '' ?
+			var options;
+			if(layout.singleColor === true)
+			{
+				options =
+                    {
+                        chartArea : {
+                            left : 20,
+                            top : 20,
+                            width : "100%",
+                            height : "100%"
+                        },
+                        timeline: { showRowLabels : layout.showRowLabels,
+                            groupByRowLabel : layout.groupByRowLabel,
+                            singleColor: layout.singleColorExpression ,
+                            //colorByRowLabel: layout.colorByRowLabel,
+							backgroundColor: layout.backgroundColorExpression,
+                            rowLabelStyle: {fontName: 'Arial', fontSize: 15 },
+                            barLabelStyle: { fontName: 'Verdana', fontSize: 13 }
+                        },
+                        hAxis: {
+                            format: layout.dateFormat
+                        }
+                    }
+			} else if(layout.colorByRowLabel === true) {
+                options =
 				{
-                chartArea : {
-                    left : 20,
-                    top : 20,
-                    width : "100%",
-                    height : "100%"
-                },
-                timeline: { showRowLabels : layout.showRowLabels,
-                    groupByRowLabel : layout.groupByRowLabel,
-                    //singleColor: layout.colorExpression ,
-                    colorByRowLabel: false,
-                    rowLabelStyle: {fontName: 'Arial', fontSize: 15 },
-                    barLabelStyle: { fontName: 'Verdana', fontSize: 13 }
-                },
-                hAxis: {
-                    format: layout.dateFormat
+                    chartArea : {
+                        left : 20,
+                            top : 20,
+                            width : "100%",
+                            height : "100%"
+                    },
+                    timeline: { showRowLabels : layout.showRowLabels,
+                        groupByRowLabel : layout.groupByRowLabel,
+                        colorByRowLabel: layout.colorByRowLabel,
+                        backgroundColor: layout.backgroundColorExpression,
+                        rowLabelStyle: {fontName: 'Arial', fontSize: 15 },
+                        barLabelStyle: { fontName: 'Verdana', fontSize: 13 }
+                    },
+                    hAxis: {
+                        format: layout.dateFormat.replace("'", "")
+                    }
                 }
-            } : {
-				chartArea : {
-					left : 20,
-					top : 20,
-					width : "100%",
-					height : "100%"
-				},
-				timeline: { showRowLabels : layout.showRowLabels,
-					groupByRowLabel : layout.groupByRowLabel,
-					singleColor: layout.colorExpression ,
-					colorByRowLabel: false,
-					rowLabelStyle: {fontName: 'Arial', fontSize: 15 },
-					barLabelStyle: { fontName: 'Verdana', fontSize: 13 }
-				},
-				hAxis: {
-					format: layout.dateFormat.replace("'", "")
-				}
+			} else {
+                options =
+                    {
+                        chartArea : {
+                            left : 20,
+                            top : 20,
+                            width : "100%",
+                            height : "100%"
+                        },
+                        timeline: { showRowLabels : layout.showRowLabels,
+                            groupByRowLabel : layout.groupByRowLabel,
+                            colorByRowLabel : false,
+                            backgroundColor : layout.backgroundColorExpression,
+                            rowLabelStyle: {fontName: 'Arial', fontSize: 15 },
+                            barLabelStyle: { fontName: 'Verdana', fontSize: 13 }
+                        },
+                        hAxis: {
+                            format: layout.dateFormat.replace("'", "")
+                        }
+                    }
 			}
 
 
-			chart.draw(data, options );
+                chart.draw(data, options );
 			//selections
 			var selections = [];
 			var tim= [];

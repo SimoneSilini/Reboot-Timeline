@@ -11,7 +11,7 @@ Timeline with grouped bars into one line based on first dimension:
 
 ## Usage
 
-Dimensions:
+###Dimensions:
 
 - Dimension 1 (required): Main dimension and row label
 - Dimension 2 (optional): Bar label
@@ -20,7 +20,20 @@ Dimensions:
 - Dimension 5 (required): Start datetime
 - Dimension 6 (required): End datetime
 
-Measures:
+####Bar Color
+You need a column in your data table with Hex color codes like #FFFFFF.
+
+####Bar Tooltip
+This can be set from the third dimension, if you have 5 dimensions and set the colors or tooltip button to tooltip (see Front end configuration -> Appearance settings).    
+You can use html code to format this value, for example \<br> for new line and \<b> for bold text.     
+For example in your data load editor you can create something like this:
+
+'\<b>Duration:\</b> ' & Interval(EndDatetime-BeginDatetime, 'HH:mm') &' minutes' &
+'\<br>\<b>Product:\</b> ' & Product_Code_Number &'\<br>\<b>Work Order:\</b> ' & Work_Order AS Tooltip_Column
+
+You need to add Tooltip_Column as 4th dimension (or as third) and you'll see a 3 line tooltip with the data.
+
+###Measures:
 There is no measure.
 
 DateFormats:

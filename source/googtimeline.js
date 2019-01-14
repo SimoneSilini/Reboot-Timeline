@@ -209,7 +209,15 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 				row.forEach(function(cell, col) {
 					
 					//values.push(cell.qText);
-					if(dimCount==5) {
+					if(dimCount==6) {
+                        if(col<4)
+                        {
+                            values.push(cell.qText);
+                        } else {
+                            var myDate = new Date(cell.qText);
+                            values.push(myDate);
+                        }
+					}else if(dimCount==5) {
                         if(col<3)
                         {
                             values.push(cell.qText);

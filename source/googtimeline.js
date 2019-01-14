@@ -42,7 +42,7 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 				dimensions : {
 					uses : "dimensions",
 					min : 3,
-					max : 5
+					max : 6
 				},
 				sorting : {
 					uses : "sorting"

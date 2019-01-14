@@ -189,7 +189,7 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 			if(dimCount == 6) {
                 data.addColumn({ type: 'string', id: 'Name' });
                 data.addColumn({ type: 'string', role: 'style' });
-                data.addColumn({ type: 'string', role: 'tooltip'});
+                data.addColumn({ type: 'string', role: 'tooltip', 'p': {'html': true}});
 
 			}else if(dimCount==5) {
                 data.addColumn({ type: 'string', id: 'Name' });

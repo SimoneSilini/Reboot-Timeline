@@ -196,8 +196,8 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
                 if(layout.thirdDimension == 'c') {
                     data.addColumn({ type: 'string', role: 'style' });
 				} else {
-                    data.addColumn({ type: 'string', role: 'tooltip'});
-				}
+                    data.addColumn({ type: 'string', role: 'tooltip', 'p': {'html': true}});
+                }
 			} else if(dimCount==4) {
                 data.addColumn({ type: 'string', id: 'Name' });
             }
@@ -337,8 +337,3 @@ define(["jquery", 'goog!visualization,1,packages:[corechart,table,timeline]'], f
 			});
 			//chart.setSelection([]);
 			//chart.setSelection(tim);
-
-		}
-	};
-
-});
